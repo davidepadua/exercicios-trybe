@@ -7,11 +7,10 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${file}"
-        }
+            "name": "Current File",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "outFiles": ["${fileDirname}/*.js"]
+          }
     ]
 }

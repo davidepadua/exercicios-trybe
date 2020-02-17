@@ -22,6 +22,7 @@ let msg;
                  break;
            case "rainha":
                  msg="A Rainha se movimenta para onde quiser quantas casas puder.";
+                 break
            default: 
                  msg="Não é uma peça válida.";
        } 
