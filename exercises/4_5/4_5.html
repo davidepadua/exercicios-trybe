@@ -1,58 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4.5 - Javascript - Parte 5</title>
-</head>
-<body>
-    <div id="paiDoPai">
-        <div id="pai">
-          <div id="primeiroFilho"></div>
-          <div id="elementoOndeVoceEsta">
-            <div id="primeiroFilhoDoFilho"></div>
-            <div id="segundoEUltimoFilhoDoFilho"></div>
-          </div>
-          Atenção!
-          <div id="terceiroFilho"></div>
-          <div id="quartoEUltimoFilho"></div>
-        </div>
-      </div>
- <script>
-   //1.Acesse o elemento elementoOndeVoceEsta.
-    console.log(document.querySelector('#elementoOndeVoceEsta'));
-   //2.Acesse pai a partir de elementoOndeVoceEsta e adicione uma color a ele.
-    document.querySelector('#elementoOndeVoceEsta').parentNode.style.background = 'gray';
-   //3. Acesse o primeiroFilhoDoFilho e adicione um texto a ele. Você lembra dos vídeos da aula anterior, como fazer isso?
-    document.querySelector('#primeiroFilhoDoFilho').innerHTML = 'Javascript é hard!';
-   //4. Acesse o primeiroFilho a partir de pai.
-    console.log(document.querySelector('#pai').firstChild); 
-   //5. Agora acesse o primeiroFilho a partir de elementoOndeVoceEsta.
-    console.log(document.querySelector('#elementoOndeVoceEsta').previousElementSibling);
-   //6. Agora acesse o texto Atenção! a partir de elementoOndeVoceEsta.
-    console.log(document.querySelector('#elementoOndeVoceEsta').nextSibling);
-   //7. Agora acesse o terceiroFilho a partir de elementoOndeVoceEsta.
-    console.log(document.querySelector('#elementoOndeVoceEsta').nextSibling.nextElementSibling);
-    //8. Agora acesse o terceiroFilho a partir de pai.
-    console.log(document.querySelector('#pai').lastElementChild.previousElementSibling);
-   
-   
-   //Parte 2 Crie um irmão para elementoOndeVoceEsta.]
-    let p = document.createElement("p");
-    p.innerHTML = "Elemento Irmão"
-    document.querySelector('#pai').appendChild(p);
-   //Crie um filho para elementoOndeVoceEsta.
-    let filhoOnde = document.createElement("p");
-    filhoOnde.innerHTML = "Filho do Irmão"
-    document.querySelector('#elementoOndeVoceEsta').appendChild(filhoOnde);
-   //Crie um filho para primeiroFilhoDoFilho.
-   let bisNeto = document.createElement("p");
-    bisNeto.innerHTML = "primeiro filho do primeiro filho, bisneto"
-    document.querySelector('#primeiroFilhoDoFilho').appendChild(bisNeto);
-   //A partir deste filho criado, acesse terceiroFilho.
-   console.log(document.querySelector('p').nextSibling);
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Exercício 4.5</title>
+    <style>
+      div {
+        border-color: black;
+        border-style: solid;
+      }
+      .title {
+        text-align: center;
+      }
+
+      .main-content {
+        background-color: yellow;
+      }
+
+      .main-content .center-content {
+        background-color: red;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .main-content .center-content p {
+        font-style: italic;
+      }
+
+      .main-content .left-content {
+        background-color: green;
+        width: 60%;
+        margin-left: 0;
+        margin-right: auto;
+      }
+
+      .main-content .left-content .small-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 100%;
+      }
+
+      .main-content .right-content {
+        background-color: blue;
+        width: 60%;
+        margin-left: auto;
+        margin-right: 0;
+      }
+
+      .main-content .description {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // COLOQUE SEU CÓDIGO AQUI
+      //1. Adicione a tag h1 com o texto Exercício 4.5 - JavaScript DOM como filho da tag body;
+      let tagH1 = document.createElement('h1');
+      tagH1.className = 'title';
+      tagH1.innerHTML = "Exercício 4.5 - Javascript DOM";
+      document.body.appendChild(tagH1);
+      //2. Adicione a tag div com a classe main-content como filho da tag body;
+      let divNova = document.createElement('div');
+      divNova.className = 'main-content';
+      divNova.id = 'main-div';
+      document.body.appendChild(divNova);
+      //3. Adicione a tag div com a classe center-content como filho da tag div criada no passo 2;
+      let divNovaCentro = document.createElement('div');
+      divNovaCentro.className = 'center-content';
+      divNovaCentro.id = 'center-div';
+      document.querySelector('#main-div').appendChild(divNovaCentro);
+      //4. Adicione a tag p como filho do div criado no passo 3 e coloque algum texto;
+      let paragrafo1 = document.createElement('p');
+      paragrafo1.innerHTML = 'A FÉ NA VITÓRIA TEM QUE SER INABALÁVEL'
+      document.querySelector('#center-div').appendChild(paragrafo1);
+      //5. Adicione a tag div com a classe left-content como filho da tag div criada no passo 2;
+      let divEsquerda = document.createElement('div');
+      divEsquerda.id = 'div-Esquerda';
+      divEsquerda.className = 'left-content';
+      document.querySelector('#main-div').appendChild(divEsquerda); 
+      //6.Adicione a tag div com a classe right-content como filho da tag div criada no passo 2;
+      let divDireita = document.createElement('div');
+      divDireita.className = 'right-content';
+      divDireita.id = 'div-Direita';
+      divDireita.style.marginRigth = "auto";
+      document.querySelector('#main-div').appendChild(divDireita);
+      //7. Adicione uma imagem com src configurado para o valor https://picsum.photos/200 e classe small-image. Esse elemento deve ser filho do div criado no passo 5;
+      let img = document.createElement('img');
+      img.src = "https://picsum.photos/200";
+      img.className = 'small-image';
+      document.querySelector('#div-Esquerda').appendChild(img);
+      //8. Adicione uma lista não ordenada com os valores de 1 a 10 por extenso, ou seja, um, dois, três, … como valores da lista. Essa lista deve ser filha do div criado no passo 6;
+      let listaDir = document.createElement('ul');
+      listaDir.innerHTML = '<ul><li>um</li><li>dois</li><li>tres</li><li>quatro</li><li>cinco</li><li>seis</li><li>sete</li><li>oito</li>';
+      document.querySelector('#div-Direita').appendChild(listaDir); 
+      //Adicione 3 tags h3, todas sendo filhas do div criado no passo 2.
+      let primeiroH3 = document.createElement('h3');
+      primeiroH3.className = 'description';
+      let segundoH3 = document.createElement('h3');
+      segundoH3.className = 'description';
+      let terceiroH3 = document.createElement('h3');
+      terceiroH3.className = 'description';
+      document.querySelector('#main-div').appendChild(primeiroH3);
+      document.querySelector('#main-div').appendChild(segundoH3);
+      document.querySelector('#main-div').appendChild(terceiroH3);
+      //Bônus
+      //3.Remova o div criado no passo 5 (aquele que possui a classe left-content). Utilize a função .removeChild();
+
+      document.querySelector('#main-div').removeChild(divEsquerda);
+     // 
+      let fundao = document.querySelector('#center-div').parentNode;
+      fundao.style.backgroundColor = "green";
 
 
- </script>      
-</body>
+      
+
+
+  
+
+
+    </script>
+  </body>
 </html>
