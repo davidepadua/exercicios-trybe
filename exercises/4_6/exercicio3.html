@@ -38,6 +38,8 @@
               
                 <button onclick="desconto()" id='discountbtn'>Saber Desconto</button>
 
+                
+
                 <script language="javascript" type="text/javascript">
                
                  let botao = document.querySelector('.exampleblock');
@@ -55,10 +57,14 @@
                     resultado.toFixed(2);
                     console.log(resultado);
                     alert("£" + resultado +   "off!");
-
                 }
-				
-                
+                let foto1 = document.getElementById('foto1');
+                let foto2 = document.getElementById('foto2');
+
+                function mudaFoto2(){
+                    let novaFoto = document.getElementById('foto2');
+                    
+                }
                 
                 <!-- JavaScript for task 3 here -->				
 				<!-- JavaScript for task 3 here -->
@@ -75,7 +81,11 @@
 						<p>For this task you will need two images of the same size.  Add one image into this page using a html <b>&lt;img /&gt;</b> tag.  Using the <b>onMouseOver()</b> and <b>onMouseOut()</b> event handlers try and make the image change to the second image when the mouse pointer hovers over it, and then swap back to the first image when the mouse pointer is moved off of the image.</p>
 						<p><a href="http://www.htmlite.com/JS019.php" target="_blank">This tutorial</a> may be of help!</p>   
 					</li>
-				</ol>            
+                </ol>  
+                <img onMouseOver="mudaFoto2()" id="foto1" src="foto1.jpg" width="200px">
+                <img onMouseOver="mudaFoto1()" id="foto2" src="foto2.jpg" width="200px"> 
+                
+                
             
             
             
